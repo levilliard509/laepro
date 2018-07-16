@@ -1,0 +1,32 @@
+table td, table td * {
+    vertical-align: top;
+    position: relative;
+}
+
+
+.hidd{
+  height: 50px;
+}
+
+.test{
+  margin-left: 20px;
+}
+
+.std{
+    margin-top: 20px;
+    height: 100%;
+}
+
+.iheader{
+    background: #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.std-section{
+    overflow-x: hidden;
+}
+
+form{
+    background: #fff;
+}

@@ -1,0 +1,118 @@
+
+<div>
+	<label style="background: #263238; padding: 10px; color: #fff;">Paiement Global</label>
+	<button mat-raised-button color="warn" (click)="printPayDetails()">Imprimer</button>
+</div>
+
+<div style="text-align: center;" id="pay_details_id">  
+<table>
+	<tr style="background: #fefefe">
+		<td class="pay">
+			<mat-list>
+			<h3 mat-subheader>El&#232;ves</h3>
+			<mat-list-item>
+			  <p mat-line>{{obj.studentLastname}}</p>
+			  <p mat-line> {{obj.studentFirstname}} </p>
+			</mat-list-item>
+			<mat-divider></mat-divider>
+		  </mat-list>
+		</td>		
+		<td class="pay">
+			<mat-list>
+			<h3 mat-subheader>Classe</h3>
+			<mat-list-item>
+				<p mat-line>{{obj.institutionClassName}}</p>
+				<p mat-line> {{obj.institutionClassLevel}} </p>
+			</mat-list-item>
+			<mat-divider></mat-divider>
+		  </mat-list>
+		</td>		
+		<td class="pay">
+			<mat-list>
+			<h3 mat-subheader>Frais Annuel/Classe</h3>
+			<mat-list-item>
+				<p mat-line>{{obj.institutionClassName}}</p>
+				<p mat-line> {{obj.newAnnualFee}} HTG</p>
+			</mat-list-item>
+			<mat-divider></mat-divider>
+		  </mat-list>
+		</td>
+	</tr>
+</table>
+
+<br/><br/>
+<div style="text-align: left; margin: 10px 10px;">
+	<strong>Paiement global</strong>
+</div>
+<table>
+	<tr>
+		<td class="pay">
+			<h6 mat-subheader>Peride Versement</h6>
+			<hr>
+		</td>
+		<td class="pay">
+			<h6 mat-subheader>Montant(HTG)</h6>
+			<hr>
+		</td>
+		<td class="pay">
+			<h6 mat-subheader>Versement(HTG)</h6>
+			<hr>
+		</td>
+		<td class="pay">
+			<h6 mat-subheader>Balance(HTG)</h6>
+			<hr>
+		</td>
+		<td class="pay">
+			<h6 mat-subheader>Date Debut</h6>
+			<hr>
+		</td>
+		<td class="pay">
+			<h6 mat-subheader>Date Fin</h6>
+			<hr>
+		</td>
+	</tr>
+
+	<tr *ngFor="let p of pay_param">
+		<td class="pay">
+			<h6 mat-subheader>{{p.periodeId}}</h6>
+		</td>
+		<td class="pay">
+			<h6 mat-subheader>{{p.paymentPeriodeValue}}</h6>
+		</td>
+		<td class="pay">
+			<h6 mat-subheader>{{calculatePay(p.paymentPeriodeValue)}}</h6>
+		</td>
+		<td class="pay">
+			<h6 mat-subheader>{{calculateBalance(p.paymentPeriodeValue) - p.paymentPeriodeValue}}</h6>
+		</td>
+		<td class="pay">
+			<h6 mat-subheader>{{p.paymentPeriodeDateStart}}</h6>
+		</td>
+		<td class="pay">
+			<h6 mat-subheader>{{p.paymentPeriodeDateEnd}}</h6>
+		</td>
+	</tr>
+
+	<tr style="background: #efe">
+		<td class="pay">
+			<h6 mat-subheader><strong>Total</strong></h6>
+		</td>
+		<td class="pay">
+			<h6 mat-subheader>{{obj.newAnnualFee}}</h6>
+		</td>
+		<td class="pay">
+			<h6 mat-subheader>{{obj.totalStudentPayment}}</h6>
+		</td>
+		<td class="pay">
+			<h6 mat-subheader>{{obj.newAnnualFee - obj.totalStudentPayment}}</h6>
+		</td>
+	</tr>
+
+	
+
+</table>
+</div>
+
+<div style="margin-top: 20px;">
+	<button mat-raised-button color="warn" (click)="onNoClick()">Fermer</button>
+</div>

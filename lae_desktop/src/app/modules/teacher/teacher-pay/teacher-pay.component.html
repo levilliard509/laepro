@@ -1,0 +1,55 @@
+
+  <mat-sidenav-container class="m-std">
+    <mat-sidenav #sidenav #start mode="side" opened="true" class="std-sidenav">
+      
+    <div class="wrap">
+      <div class="">
+        <!-- header -->
+       
+        <div style="height: 1px"></div>
+        <mat-grid-list cols="1" rowHeight="50px">
+            <mat-grid-tile [colspan]="1" class="tit m-grid gcel"> PROFS </mat-grid-tile>
+
+            <!-- home -->
+            <mat-grid-tile [colspan]="1" class="m-grid gcel" [routerLink]="['/home', {outlets: {'home': ['tch_home']}}]">
+                <div class="item">
+                    <br/>
+                    <img src="assets/img/icon/home.png" width="30" height="30">
+                    <p class="h8">Acceuil</p>
+                </div>
+            </mat-grid-tile>
+    
+            <!-- mgr -->        
+            <mat-grid-tile [colspan]="1" class="curs m-grid" [routerLink]="['/home', {outlets: {'home': ['tch_mgr']}}]">
+                <div class="itm">
+                    <br/>
+                    <img src="assets/img/icon/user.png" width="30" height="30">
+                    <p class="h8">Gest. Prof</p>
+                </div>
+            </mat-grid-tile>
+    
+            <!-- pay -->
+            <mat-grid-tile [colspan]="1" class="curs m-grid current-std" [routerLink]="['/home', {outlets: {'home': ['tch_pay']}}]">
+                <div class="itm">
+                    <br/>
+                    <img src="assets/img/icon/pay.png" width="30" height="30">
+                    <p class="h8">Gest. Paie</p>
+                </div>
+            </mat-grid-tile>
+    
+            <!-- report >
+            <mat-grid-tile [colspan]="1" class="curs m-grid" [routerLink]="['/home', {outlets: {'home': ['tch_report']}}]">
+                <img src="assets/img/icon/report.png" width="30" height="30">
+            </mat-grid-tile-->
+        </mat-grid-list>
+      </div>
+
+    </div>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content class="std-contain">
+         <router-outlet name="home"></router-outlet>
+         <employee-pay-mgr></employee-pay-mgr>
+        </mat-sidenav-content>
+  </mat-sidenav-container>

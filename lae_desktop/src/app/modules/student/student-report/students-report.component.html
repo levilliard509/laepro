@@ -1,0 +1,127 @@
+
+
+
+  <mat-sidenav-container class="m-std">
+			<mat-sidenav #sidenav #start mode="side" opened="true" class="std-sidenav">
+				
+			<div class="wrap">
+				<div class="">
+					<!-- header -->
+				 
+					<div style="height: 1px"></div>
+					<mat-grid-list cols="1" rowHeight="50px">
+
+							<mat-grid-tile [colspan]="1" class="tit m-grid gcel"> Eleves </mat-grid-tile>
+
+							<!-- home -->
+							<mat-grid-tile [colspan]="1" class="m-grid gcel" [routerLink]="['/home', {outlets: {'home': ['std_home']}}]">
+							  <div class="itm"> 
+								  <br/>
+								  <img src="assets/img/icon/home.png" width="30" height="30">
+								  <p class="h8">Acceuil</p>
+							  </div>
+							</mat-grid-tile>
+				  
+							<!-- mgr -->        
+							<mat-grid-tile [colspan]="1" class="curs m-grid" [routerLink]="['/home', {outlets: {'home': ['std_mgr']}}]">
+							  <div class="itm"> 
+								  <br/>
+								  <img src="assets/img/icon/user.png" width="30" height="30">
+								  <p class="h8">Gest. El.</p>
+							  </div>
+							</mat-grid-tile>
+				  
+							<!-- pay -->
+							<mat-grid-tile [colspan]="1" class="curs m-grid" [routerLink]="['/home', {outlets: {'home': ['std_pay']}}]">
+							  <div class="itm"> 
+								  <br/>
+								  <img src="assets/img/icon/pay.png" width="30" height="30">
+								  <p class="h8">Gest. Paie</p>
+							  </div>
+							</mat-grid-tile>
+				  
+							<!-- report -->
+							<mat-grid-tile [colspan]="1" class="curs m-grid current-std">
+							  <div class="itm"> 
+								  <br/>
+								  <img src="assets/img/icon/report.png" width="30" height="30" [routerLink]="['/home', {outlets: {'home': ['std_report']}}]">
+								  <P class="h8">Rapports</P>
+							  </div>
+							 </mat-grid-tile>
+					</mat-grid-list>
+				</div>
+	
+			</div>
+	
+			</mat-sidenav>
+	
+			<mat-sidenav-content class="std-contain">
+
+					 <router-outlet name="home"></router-outlet>
+
+					 <mat-tab-group>
+						<mat-tab label="RAPORT">
+							<div style="margin-left: 20px; margin-right: 20px; padding-left: 10px;">		
+							<div class="example-container mat-elevation-z8">
+									<div style="bacground: #eee; padding-left: 10px;">
+										<table>
+										<tr>
+											<td>
+												<mat-input-container floatPlaceholder="never">
+														<input matInput #filter placeholder="Nom">
+												</mat-input-container>
+											</td>
+								
+											<!--td>
+														<label style="margin: 2px;">Filtrer par date d'incription:</label>
+											</td>			
+											<td>
+												<mat-input-container>
+													<input matInput type="date" size="15" [(ngModel)]="dateStart" placeholder="Date debut">
+												</mat-input-container>	
+											</td>
+								
+											<td>
+												<mat-input-container>
+													<input matInput type="date" size="15" [(ngModel)]="dateEnd" placeholder="Date fin">
+												</mat-input-container>	
+											</td-->				
+											</tr>
+										</table>
+									</div>
+								
+									<mat-table #table [dataSource]="dataSource">
+										<ng-container cdkColumnDef="Nom">
+											<mat-header-cell *cdkHeaderCellDef> Nom </mat-header-cell>
+											<mat-cell *cdkCellDef="let row"> {{row.studentFirstname}} </mat-cell>
+										</ng-container>
+								
+								
+										<ng-container cdkColumnDef="Prenom">
+											<mat-header-cell *cdkHeaderCellDef> Prenom </mat-header-cell>
+											<mat-cell *cdkCellDef="let row"> {{row.studentLastname}} </mat-cell>
+										</ng-container>
+								
+										<ng-container cdkColumnDef="Absence">
+											<mat-header-cell *cdkHeaderCellDef> </mat-header-cell>
+											<mat-cell *cdkCellDef="let row" olor="warn"><button mat-button color="warn" (click)="openAbsenceDialog(row)">Absence et Retard</button>  </mat-cell>
+										</ng-container>
+								
+								
+										<ng-container cdkColumnDef="Sanction">
+											<mat-header-cell *cdkHeaderCellDef> </mat-header-cell>
+											<mat-cell *cdkCellDef="let row" olor="warn"> <button mat-button color="warn" (click)="openSanctionDialog(row)">Sanction</button> </mat-cell>
+										</ng-container>
+								
+										<mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+										<mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+									</mat-table>
+								</div>            
+							</div>
+						</mat-tab>
+						<!--mat-tab label="MODIFIER"> <student-update> </student-update> </mat-tab-->
+					</mat-tab-group>
+	
+			</mat-sidenav-content>
+		</mat-sidenav-container>
+	

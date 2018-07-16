@@ -1,0 +1,247 @@
+
+  <div>
+    <label style="background: #263238; padding: 10px; color: #fff;"> Details sur l'El&#232;ve</label>
+    <button mat-raised-button color="warn" (click)="printStd()">Imprimer</button>      
+  </div>
+  
+  <div id="print-section">
+  
+  <div style="margin: 10px 40px; font-size: 20px;">
+    Institution {{ins.institutionName}} 
+  </div>
+  
+  <mat-grid-list cols="3" rowHeight="740px">
+        <mat-grid-tile>
+            <div class="std">
+                <p class="im"><img src={{imgUrl}} style="border: solid 1px #263238;" width="199" height="198"></p>
+              <table>
+                <tr>
+                    <td>
+                      <div class="header-info">Classe</div>
+                    </td>
+                  </tr>			  		
+                  <tr>
+                      <td>
+                        <div class="lab">
+                          <label>Nom de la classe: </label>
+                          {{cls.institutionClassName}}
+                        </div>
+                      </td>
+                      </tr>
+                      <tr>
+                      <td>
+                        <div class="lab">
+                          <label>Niveau: </label>
+                          {{cls.institutionClassLevel}}
+                        </div>
+                      </td>	
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="lab">
+                          <label>Description: </label>
+                          {{cls.institutionClassDesc}}
+                        </div>
+                      </td>			  		
+                    </tr> 
+                </table>     
+            </div>
+
+        </mat-grid-tile>	
+        <mat-grid-tile class="vbar">
+          <div class="std">
+          <table>
+          <tr>
+            <td>
+              <div class="header-info">El&#232;ve</div>
+            </td>
+          </tr>			  		
+           <tr>
+              <td>
+                <div class="lab">
+                  <label>Nom: </label>
+                  {{std.studentLastname}}
+                </div>
+              </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Prénom: </label>
+                    {{std.studentFirstname}}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Date de Naiss: </label>
+                    {{std.studentBirthday}}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Lieu de Naiss: </label>
+                    {{std.studentBirthplace}}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Sex: </label>
+                    {{std.studentSex}}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Langue Maternelle: </label>
+                    {{std.studentMotherTonge}}
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Compétence: </label>
+                    {{std.studentSkills}}
+                  </div>
+                </td>
+              </tr>
+  
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Tels: </label>
+                    {{std.studentTels}}
+                  </div>
+                </td>
+              </tr>
+  
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Email: </label>
+                    {{std.studentEmail}}
+                  </div>
+                </td>
+              </tr>
+  
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Ancienne Ecole: </label>
+                    {{std.studentOldSchool}}
+                  </div>
+                </td>
+              </tr> 
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Adresse: </label>
+                    {{std.studentAddress}}
+                  </div>
+                </td>
+              </tr>
+            </table>	
+          </div>		
+      </mat-grid-tile>
+  
+      <mat-grid-tile class="vbar">
+        <div class="std">
+          <table>
+            <tr>
+              <td>
+                <div class="header-info">P&#232;re</div>
+              </td>
+            </tr>
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Nom:</label>
+                    {{prt.parentFirstName}}
+                  </div>
+                </td>
+                </tr>
+  
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Prénom:</label>
+                    {{prt.parentLastname}}
+                  </div>
+                </td>
+                </tr>				  	
+  
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Tels:</label>
+                    {{prt.parentTels}}
+                  </div>
+                </td>
+                </tr>
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Adresse:</label>
+                    {{prt.parentAddress}}
+                  </div>
+                </td>
+                </tr>				  					  	
+  
+                <tr>
+              <td>
+                <div class="header-info">M&#232;re</div>
+              </td>			  	    
+            </tr>
+  
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Nom:</label>
+                    {{prtf.parentFirstName}}
+                  </div>
+                </td>
+                </tr>
+  
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Prenom:</label>
+                    {{prtf.parentLastname}}
+                  </div>
+                </td>
+                </tr>		
+  
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Tels:</label>
+                    {{prtf.parentTels}}
+                  </div>
+                </td>
+                </tr>	
+              <tr>
+                <td>
+                  <div class="lab">
+                    <label>Adresse:</label>
+                    {{prtf.parentAddress}}
+                  </div>
+                </td>
+                </tr>				  			  	
+  
+            </table>
+           </div>
+        </mat-grid-tile>  		   			
+      </mat-grid-list>
+  
+  </div>
+  
+  <div style="margin-top: 40px;">
+    <button mat-raised-button color="warn" (click)="onNoClick()">Fermer</button>
+  </div>

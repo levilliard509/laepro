@@ -1,0 +1,28 @@
+<mat-horizontal-stepper [linear]="isLinear">
+    <mat-step [stepControl]="firstFormGroup">
+      <form [formGroup]="firstFormGroup">
+        <ng-template matStepLabel>CODE PROF</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Code Prof" formControlName="stdCode" required>
+        </mat-form-field>
+        <div>
+          <button mat-button matStepperNext (click)="setStd()" [disabled]="!firstFormGroup.valid">Next</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Cours-Professeurs</ng-template>
+
+        <div *ngIf="isFound">
+          <h2>Prof. {{ result }}</h2>
+          <hr>
+          <teacher-course [teacherId]=emp.employeeId ></teacher-course>
+        </div>
+
+        <div>
+          <br/><br/><br/><br/>
+          <button mat-button color="warn" matStepperPrevious (click)="resetForms()">Retour</button>
+          <span style="color: #f00;" *ngIf="!isFound">PROF NON TROUVE</span>
+        </div>
+    </mat-step>
+  </mat-horizontal-stepper>

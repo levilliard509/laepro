@@ -1,0 +1,31 @@
+
+<div>
+	<form [formGroup]="ABForm" (ngSubmit)="onClickSave()">
+		<div class="header-info">
+	       Absence pour l'Eleve {{student.studentFirstname + " " + student.studentLastname }} 
+		</div>
+		<div class="test">
+			<table>
+				<tr>
+					<td>
+						<mat-input-container>
+							<input matInput type="text" placeholder="Motif" formControlName="absenceMotif" size="30">
+						</mat-input-container>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<mat-input-container style="border: solid 1px #aaa;">
+	                		<textarea type="text" placeholder="Details" matInput matTextareaAutosize matAutosizeMinRows="10" formControlName="absenceDetails"></textarea>
+						</mat-input-container>
+					</td>
+				</tr>
+			</table>
+	         
+			<div>
+				<button mat-raised-button color="warn" [disabled]="!ABForm.valid" type="submit">Sauvegarder</button>
+				<button mat-raised-button color="warn" (click)="onNoClick()" type="button"> Fermer</button>
+			</div>
+	    </div>
+    </form>
+</div>

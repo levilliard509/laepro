@@ -1,0 +1,35 @@
+
+
+.menu{
+    display: block;
+}
+
+.std-contain{
+  align-items: top;
+  justify-content: top;
+}
+
+.wrap {
+   width: 100%;
+   background-color: #fff;
+}
+
+mat-grid-tile {
+  background-color: #c9e9f1;
+  text-transform: uppercase;
+  text-align: left;
+  font-size: 12px;
+}
+
+.tit{
+  background-color: #263238;
+  color: #fff
+}
+
+.curs{
+    cursor: pointer;
+}
+
+.current-std{
+  background: #afc8ce;
+}

@@ -1,0 +1,120 @@
+	<mat-input-container floatPlaceholder="never">
+		<input matInput #filter placeholder="Critère de recherche">
+	</mat-input-container>
+
+	<mat-select id="personSex" placeholder="Filtrer par classe" style="width: 150px; margin: 0 15px">
+		<mat-option (click)="updateByClasses(-1)">Voir tous</mat-option>
+		<mat-option *ngFor="let c of iclasses" value={{c.institutionClassId}} (click)="updateByClasses(c.institutionClassId)">{{c.institutionClassName}}</mat-option>
+	</mat-select>
+
+	<button mat-button color="warn" (click)="fetchData()" matTooltip="refresh">
+		<i class="material-icons">refresh</i>
+	</button>
+
+	<div class="example-container mat-elevation-z8">
+		<mat-table #table [dataSource]="dataSource">
+		<ng-container cdkColumnDef="Code">
+			<mat-header-cell *cdkHeaderCellDef> Code </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> {{row.studentId}} </mat-cell>
+		</ng-container>
+
+		<ng-container cdkColumnDef="Prenom">
+			<mat-header-cell *cdkHeaderCellDef> Pr&#233;nom </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> {{row.studentFirstname}}</mat-cell>
+		</ng-container>
+
+		<ng-container cdkColumnDef="Nom">
+			<mat-header-cell *cdkHeaderCellDef> Nom </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> {{row.studentLastname}} </mat-cell>
+		</ng-container>
+
+		<ng-container cdkColumnDef="DateNaiss">
+			<mat-header-cell *cdkHeaderCellDef> Date Naiss </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> {{row.studentBirthday}} </mat-cell>
+		</ng-container>
+
+		<ng-container cdkColumnDef="LieuNaiss">
+			<mat-header-cell *cdkHeaderCellDef> Lieu Naiss </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> {{row.studentBirthplace}} </mat-cell>
+		</ng-container>
+
+		<ng-container cdkColumnDef="Sexe">
+			<mat-header-cell *cdkHeaderCellDef> Sexe </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> {{row.studentSex}} </mat-cell>
+		</ng-container>
+
+		<!--ng-container cdkColumnDef="Competences">
+			<mat-header-cell *cdkHeaderCellDef> Comp&#233;tences </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> {{row.studentSkills}} </mat-cell>
+		</ng-container-->
+
+		<ng-container cdkColumnDef="Tel">
+			<mat-header-cell *cdkHeaderCellDef> Tel </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> {{row.studentTels}} </mat-cell>
+		</ng-container>
+
+		<!--ng-container cdkColumnDef="Email">
+			<mat-header-cell *cdkHeaderCellDef> Email </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> {{row.studentEmail}} </mat-cell>
+		</ng-container>
+
+		<ng-container cdkColumnDef="Religion">
+			<mat-header-cell *cdkHeaderCellDef> Religion </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> {{row.studentReligion}} </mat-cell>
+		</ng-container-->
+
+		<ng-container cdkColumnDef="Details">
+			<mat-header-cell *cdkHeaderCellDef>  </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> <button mat-button color="warn" (click)="openDetailsDialog(row)">Details</button></mat-cell>
+		</ng-container>
+
+		<ng-container cdkColumnDef="Update">
+			<mat-header-cell *cdkHeaderCellDef>  </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> <button mat-button color="warn" (click)="openUpdateDialog(row)">Update</button></mat-cell>
+		</ng-container>
+
+		<ng-container cdkColumnDef="Sanction">
+			<mat-header-cell *cdkHeaderCellDef>  </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> <button mat-button color="warn" (click)="openSanctionDialog(row)">Sanction</button></mat-cell>
+		</ng-container>
+
+		<ng-container cdkColumnDef="RAbsence">
+			<mat-header-cell *cdkHeaderCellDef>  </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> <button mat-button color="warn" (click)="openAbsenceDialog(row)">Retard et Absence</button></mat-cell>
+		</ng-container>
+
+		<!--ng-container cdkColumnDef="Skills">
+			<mat-header-cell *cdkHeaderCellDef> Competences </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> {{row.studentSkills}} </mat-cell>
+		</ng-container-->
+
+		<!--ng-container cdkColumnDef="CreatedBy">
+			<mat-header-cell *cdkHeaderCellDef> Enregistr&#233; par: </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> {{row.createdBy}} </mat-cell>
+		</ng-container>
+
+		<ng-container cdkColumnDef="DateCreated">
+			<mat-header-cell *cdkHeaderCellDef> Enregistr&#233; </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> {{row.dateCreated}} </mat-cell>
+		</ng-container>
+
+		<ng-container cdkColumnDef="ModifiedBy">
+			<mat-header-cell *cdkHeaderCellDef> Modifi&#233; par:</mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> {{row.modifiedBy}} </mat-cell>
+		</ng-container>
+
+		<ng-container cdkColumnDef="DateModified">
+			<mat-header-cell *cdkHeaderCellDef> Modifi&#233; le: </mat-header-cell>
+			<mat-cell *cdkCellDef="let row"> {{row.dateModified}} </mat-cell>
+		</ng-container-->
+
+		<mat-header-row *cdkHeaderRowDef="columns"></mat-header-row>
+		<mat-row *cdkRowDef="let row; columns: columns;"></mat-row>
+	</mat-table>
+	<mat-paginator #paginator
+								[length]="studentDatabase.data.length"
+								[pageIndex]="0"
+								[pageSize]="25"
+								[pageSizeOptions]="[5, 10, 25, 100]">
+	</mat-paginator>
+</div>

@@ -1,0 +1,37 @@
+
+.header-info{
+	padding: 5px 40px;
+	background: #263238;
+	margin: 20px 10px 0;
+	color: #fff;
+	width: 100%;
+}
+
+
+
+.lab {
+	padding: 10px 4px;
+	color: #555;
+	margin-left: 20px;
+}
+
+table td, table td * {
+    vertical-align: top;
+}
+
+.hidd{
+  height: 50px;
+}
+
+.std{
+	height: 100%;
+}
+.im{
+	text-align: center;
+	margin-top: 26px;
+}
+
+.vbar{
+	border-left: solid 1px #666;
+	height: 100%;
+}

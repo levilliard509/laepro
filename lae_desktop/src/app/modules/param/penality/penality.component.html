@@ -1,0 +1,56 @@
+
+	<div>
+	<mat-grid-list cols="3">
+	  <mat-grid-tile *ngFor="let p of penls">
+		  <mat-card>
+			<mat-card-title>
+				{{p.penalityTypeName}}
+			</mat-card-title>
+
+			<mat-card-subtitle>
+				{{p.penalityTypeDesc}}
+			</mat-card-subtitle>
+
+			<mat-card-content>
+			   <div class="card">
+				 <p>{{p.penalityTypeFee}}HTG</p>
+			   </div>
+				<div>
+		          <mat-grid-list cols="3">
+		  			<mat-grid-tile>
+		  				<button mat-raised-button class="btn1" (click)="openDialog(p, 'Update', '400px', '500px')"> Modifier</button>
+		  			</mat-grid-tile>
+		  			<mat-grid-tile>
+		  				<button mat-raised-button class="btn2" (click)="openDialog(p, 'Delete', '400px', '500px')"> Supprimer</button>
+		  			</mat-grid-tile>  		  
+
+		  			<mat-grid-tile>
+		  				<button mat-raised-button class="btn3" (click)="openDialog(p, 'Details', '400px', '500px')"> Détails</button>
+		  			</mat-grid-tile>  			
+		  		  </mat-grid-list>
+	  		  </div>
+			</mat-card-content>
+		  </mat-card>
+	  </mat-grid-tile>
+
+
+	  <mat-grid-tile>
+		  <mat-card>
+			<mat-card-title>
+				Nouvelle sanction
+			</mat-card-title>
+
+			<mat-card-subtitle>
+				Détails
+			</mat-card-subtitle>
+
+			<mat-card-content>
+			   <div class="card1">
+		  			<button mat-raised-button color="warn" (click)="openDialog(penl, 'Add', '650px', '500px')"> Ajouter</button>
+			   </div>
+			</mat-card-content>
+		  </mat-card>  
+	  </mat-grid-tile>
+
+	  </mat-grid-list>
+</div>

@@ -1,0 +1,30 @@
+<div>
+	<form [formGroup]="PenForm" (ngSubmit)="onClickSave()">
+		<div class="header-info">
+	       Sanction pour l'Eleve {{student.studentFirstname + " " + student.studentLastname }} 
+		</div>
+		<div class="test">
+			<table>
+				<tr>
+					<td>
+						<mat-select id="penalityTypeId" placeholder="Type de sanction" formControlName="penalityTypeId">
+							<mat-option *ngFor="let t of ptypes" value={{t.penalityTypeId}}>{{t.penalityTypeName}}</mat-option>
+						</mat-select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<mat-input-container style="border: solid 1px #aaa;">
+	                		<textarea type="text" placeholder="Description" matInput matTextareaAutosize matAutosizeMinRows="10" formControlName="penalityDesc"></textarea>
+						</mat-input-container>
+					</td>
+				</tr>
+			</table>
+	         
+			<div>
+				<button mat-raised-button color="warn" [disabled]="!PenForm.valid" type="submit">Sauvegarder</button>
+				<button mat-raised-button color="warn" (click)="onNoClick()" type="button"> Fermer</button>
+			</div>
+	    </div>
+    </form>
+</div>

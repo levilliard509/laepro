@@ -1,0 +1,57 @@
+<div style="text-align: center; magin-bottom: 80px; background: #263238; padding: 10px; color: #fff;">
+        Update-Cours
+</div>
+
+<div style="height: 20px">
+
+</div>
+<form [formGroup]="CourseForm" (ngSubmit)="onClickSave()">
+        <table>
+          <tr>
+            <td>
+                <mat-select placeholder="Periode" formControlName="periodeId">
+                   <mat-option *ngFor="let p of periodes" value={{p.periodeId}}>{{p.periodeName}}</mat-option>
+                </mat-select>
+             </td>
+             <td>
+               &nbsp;
+               &nbsp;
+             </td>
+             <td>
+                <mat-input-container>
+                    <input matInput placeholder="Niveau" formControlName="courseLevel" [readonly]="isDelete">
+                </mat-input-container>							
+              </td>
+             <td>
+                &nbsp;
+                &nbsp;
+              </td>
+              <td>              
+                <mat-input-container>
+                    <input matInput placeholder="Titre" formControlName="courseTitle" [readonly]="isDelete">
+                </mat-input-container>
+            </td>
+          </tr>
+          <tr>
+            <td>
+                <mat-input-container>
+                    <input matInput placeholder="Nbr Heures" formControlName="courseCreditHours" [readonly]="isDelete">
+                  </mat-input-container>							
+            </td>
+            <td>
+                &nbsp;
+                &nbsp;
+              </td>
+            <td>
+                  <mat-input-container>
+                    <textarea matInput placeholder="Description" formControlName="courseDesc" [readonly]="isDelete"></textarea>
+                  </mat-input-container>
+            </td>
+          </tr>
+          <tr>
+              <div class="button-row">
+                  <button mat-button class="btn2" type="submit" [disabled]="!CourseForm.valid">Sauvegarder</button>
+              </div>	
+          </tr>
+        </table>
+      </form>

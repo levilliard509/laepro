@@ -1,0 +1,120 @@
+<div style="text-align: center; magin-bottom: 80px; background: #263238; padding: 10px; color: #fff;">
+    {{clas.institutionClassName}}-Période de Versement
+</div>
+
+<div>
+    <div style="margin-left: 10px">
+      <mat-form-field floatPlaceholder="never">
+        <input matInput #filter placeholder="Recherche">
+      </mat-form-field>
+    </div>
+  
+    <mat-table #table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="Versement">
+          <mat-header-cell *matHeaderCellDef> Période </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.periodeId}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Valeur">
+        <mat-header-cell *matHeaderCellDef> Versement(HTG) </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.paymentPeriodeValue}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Desc">
+        <mat-header-cell *matHeaderCellDef> Desc </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.paymentPeriodeDetails}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="DateDebut">
+        <mat-header-cell *matHeaderCellDef> Date Début </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.paymentPeriodeDateStart}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="DateFin">
+        <mat-header-cell *matHeaderCellDef> Date Fin </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.paymentPeriodeDateEnd}} </mat-cell>
+      </ng-container>
+  
+    <ng-container matColumnDef="Update">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row"> <button mat-button color="warn" (click)="openUpdateDialog(row)">Update</button></mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="Delete">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row"> <button mat-button color="warn" (click)="deletePay(row)">Supprimer</button></mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+  <div style="height: 20px; background: #eee">
+
+  </div>
+  <hr>
+  <div>
+    <form [formGroup]="PayForm" (ngSubmit)="onClickSave()" *ngIf="isAdd">
+      <tr>
+          <td>
+              <mat-input-container>
+                  <input matInput placeholder="Periode" size="10" formControlName="periodeId" type="number" [readonly]="isDelete">
+              </mat-input-container>
+          </td>
+          
+          <td>
+              <mat-input-container>
+                  <input matInput placeholder="Versement(HTG)" type="number" size="10" formControlName="paymentPeriodeValue" [readonly]="isDelete">
+                </mat-input-container>
+          </td>
+      </tr>
+      <tr>
+        <td>
+            <mat-input-container>
+                <input matInput [matDatepicker]="picker" placeholder="Date Debut" formControlName="paymentPeriodeDateStart" [readonly]="isDelete">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker startView="year"></mat-datepicker>
+              </mat-input-container>
+        </td>
+
+        <td>
+          &nbsp;
+        </td>
+        <td>
+            <mat-input-container>
+                <input matInput [matDatepicker]="picker1" placeholder="Date Fin" formControlName="paymentPeriodeDateEnd" [readonly]="isDelete">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1 startView="year"></mat-datepicker>
+              </mat-input-container>	
+        </td>
+
+        <td>
+          &nbsp;&nbsp;
+        </td>
+
+        <td>
+          <mat-input-container>
+              <input matInput placeholder="Desc/Type/Details" size="30" formControlName="paymentPeriodeDetails" [readonly]="isDelete">
+          </mat-input-container>
+       </td>
+      
+      </tr>
+      <tr>
+          <div class="button-row">
+              <button mat-button class="btn2" type="submit" [disabled]="!PayForm.valid">Sauvegarder</button>
+          </div>	
+      </tr>
+    </form>
+    <br/>
+    <div class="button-row">
+      <button mat-fab class="btn2" (click)="showAdd()"><mat-icon>add</mat-icon></button>
+    </div>								
+  
+  </div>
+
+  <div style="text-align: right; margin-top: 20px">
+      <button mat-button color="warn" (click)="onNoClick()">Fermer</button>
+  </div>
+  

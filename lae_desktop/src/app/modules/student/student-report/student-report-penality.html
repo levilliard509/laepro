@@ -1,0 +1,52 @@
+
+<div class="header-info">
+	{{std.studentFirstname + " " + std.studentLastname}}
+</div>
+<br/><br/><br/>
+<div class="example-container mat-elevation-z8" id="print_sanction">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!---   displayedColumns = ['Sanction', 'Description', 'Details', 'Frais', 'Date'];-->
+
+    <!-- Sanction Column -->
+    <ng-container matColumnDef="Sanction">
+      <mat-header-cell *matHeaderCellDef  [style.color]="maroon"> Type Sanction </mat-header-cell>
+      <mat-cell *matCellDef="let element" color="warn"> {{element.penalityTypeName}} </mat-cell>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="Description">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.penalityTypeDesc}} </mat-cell>
+    </ng-container>
+
+    <!-- Details Column -->
+    <ng-container matColumnDef="Details">
+      <mat-header-cell *matHeaderCellDef> Details </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.penalityDesc}} </mat-cell>
+    </ng-container>
+
+    <!-- Frais Column -->
+    <ng-container matColumnDef="Frais">
+      <mat-header-cell *matHeaderCellDef> Frais </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.penalityTypeFee}}HTG </mat-cell>
+    </ng-container>
+
+    <!-- Date Column -->
+    <ng-container matColumnDef="Date">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.dateCreated}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+
+<div *ngIf="!isEmty">
+	<h3 style="color: red; margin: 40px;">Ancune sanction et infraction</h3>
+</div>
+
+<div style="margin-top: 40px;">
+	<button mat-raised-button color="warn" (click)="onNoClick()">Fermer</button>
+</div>

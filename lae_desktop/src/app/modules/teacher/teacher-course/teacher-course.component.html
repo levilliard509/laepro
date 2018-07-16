@@ -1,0 +1,88 @@
+<p>
+  Liste de Cours
+</p>
+
+<table>
+  <!-- header -->
+  <tr>
+    <td>
+      <div class="ptd headerp">
+        Classe
+      </div>
+    </td>
+
+    <td>
+      <div class="ptd headerp">
+        Cours
+      </div>
+    </td>
+
+    <td>
+      <div class="ptd headerp">
+        Date Debut
+      </div>
+    </td>
+
+    <td>
+      <div class="ptd headerp">
+        Date Fin
+      </div>
+    </td>
+<!-- 
+    <td>
+      <div class="ptd headerp">
+        Details
+      </div>
+    </td> -->
+
+    <td>
+
+    </td>
+  </tr>
+
+  <!--data-->
+  <tr *ngFor="let cc of cls_courses">
+      <td>
+        <div class="ptd">
+            {{cc[1].institutionClassLevel}}
+        </div>
+      </td>
+  
+      <td>
+        <div class="ptd">
+            {{cc[2].courseTitle}}
+        </div>
+      </td>
+  
+      <td>
+        <div class="ptd">
+            {{convertToNormalDate(cc[0].dateStart)}}
+        </div>
+      </td>
+  
+      <td>
+        <div class="ptd">
+            {{convertToNormalDate(cc[0].dateEnd)}}
+        </div>
+      </td>
+<!--   
+      <td>
+        <div class="ptd">
+            {{cc[0].classCourseDetails}}
+        </div>
+      </td> -->
+  
+      <td>
+          <!-- <button type="button"  mat-button color="warn">Modifier</button> -->
+          <button type="button"  mat-button color="warn" (click)="deleteCourse(cc[0].classCourseId)">Supprimer</button>
+      </td>
+    </tr>
+  
+</table>
+
+<div style="margin: 40px auto;">
+  &nbsp;&nbsp;
+  <button mat-raised-button color="warn" matStepperPrevious (click)="openCUDDialog()">Nouveau Cours</button>
+</div>
+
+

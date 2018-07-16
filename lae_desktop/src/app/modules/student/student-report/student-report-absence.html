@@ -1,0 +1,40 @@
+
+<div class="header-info">
+	{{std.studentFirstname + " " + std.studentLastname}}
+</div>
+<br/><br/><br/>
+<div class="example-container mat-elevation-z8" id="print_sanction">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!---displayedColumns = ['Motif', 'Details', 'Heure']-->
+
+    <!-- Motif Column -->
+    <ng-container matColumnDef="Motif">
+      <mat-header-cell *matHeaderCellDef  [style.color]="maroon"> Motif </mat-header-cell>
+      <mat-cell *matCellDef="let element" color="warn"> {{element.absenceMotif}} </mat-cell>
+    </ng-container>
+
+    <!-- Details Column -->
+    <ng-container matColumnDef="Details">
+      <mat-header-cell *matHeaderCellDef> Details </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.absenceDetails}} </mat-cell>
+    </ng-container>
+
+    <!-- Heure Column -->
+    <ng-container matColumnDef="Heure">
+      <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.dateCreated}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
+
+<div *ngIf="!isEmty">
+	<h3 style="color: red; margin: 40px;">Ancune absence ou retard</h3>
+</div>
+
+<div style="margin-top: 40px;">
+	<button mat-raised-button color="warn" (click)="onNoClick()">Fermer</button>
+</div>

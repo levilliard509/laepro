@@ -1,0 +1,81 @@
+
+	<div>
+	<mat-grid-list cols="2">
+	  <mat-grid-tile *ngFor="let c of classes">
+		  <mat-card>
+			<mat-card-title>
+				{{c.institutionClassLevel}}
+			</mat-card-title>
+
+			<mat-card-subtitle>
+				{{c.institutionClassName}}
+			</mat-card-subtitle>
+
+			<mat-card-content>
+			   <div class="card">
+				 <p>{{c.institutionClassDesc}}</p>
+			   </div>
+				<div>
+		      <mat-grid-list cols="3">
+		  			<mat-grid-tile>
+		  				<button mat-raised-button class="btn1" (click)="openDialog(c, 'Update', '500px', '500px')"> Modifier</button>
+					  </mat-grid-tile>
+					  
+		  			<mat-grid-tile>
+		  				<button mat-raised-button class="btn2" (click)="openDialog(c, 'Delete', '500px', '500px')"> Supprimer</button>
+		  			</mat-grid-tile>  		  
+
+		  			<mat-grid-tile>
+						<button mat-raised-button class="btn3" (click)="openDialog(c, 'Details', '500px', '500px')"> Détails</button>
+					</mat-grid-tile>			
+		  		  </mat-grid-list>
+	  		  </div>
+			</mat-card-content>
+		  <!-- Payment and cours config -->
+		  <mat-list>
+			<mat-divider></mat-divider>
+			<mat-list-item>
+				<button mat-button color="warn" (click)="openPaymentDialog(c)">
+						<i class="material-icons">fiber_manual_record</i>
+					  Mode de paiement
+				</button>
+			</mat-list-item>
+			<mat-divider></mat-divider>
+			<mat-list-item>      
+				<button mat-button color="warn" (click)="openCourseDialog(c)">
+					<i class="material-icons">fiber_manual_record</i>
+					Liste de Cours
+				</button>
+			</mat-list-item>
+			<!-- <mat-divider></mat-divider>
+			<mat-list-item>      
+				<button mat-button color="warn" (click)="openScheduleDialog(c)">
+					<i class="material-icons">fiber_manual_record</i>
+					Horaire Classe
+				</button>
+			</mat-list-item> -->
+		  </mat-list>
+		</mat-card>
+	  </mat-grid-tile>
+
+
+	  <mat-grid-tile>
+		  <mat-card>
+			<mat-card-title>
+				Nouvelle classe
+			</mat-card-title>
+
+			<mat-card-subtitle>
+				Niveau
+			</mat-card-subtitle>
+
+			<mat-card-content>
+			   <div class="card1">
+		  			<button mat-raised-button color="warn" (click)="openDialog(defaultClas, 'Add', '500px', '500px')"> Ajouter</button>
+			   </div>
+			</mat-card-content>
+		  </mat-card>  
+	  </mat-grid-tile>
+
+	  </mat-grid-list>
+</div>

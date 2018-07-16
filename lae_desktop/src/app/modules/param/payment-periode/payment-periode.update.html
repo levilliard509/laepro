@@ -1,0 +1,42 @@
+<div style="text-align: center; magin-bottom: 80px; background: #263238; padding: 10px; color: #fff;">
+        Update-Période de Versement
+</div>
+
+<div style="height: 20px">
+
+</div>
+<table>
+    <tr>
+        <td>
+        <form [formGroup]="PayForm" (ngSubmit)="onClickSave()">
+            <mat-input-container class="inp1">
+            <input matInput placeholder="Versement(HTG)" size="10" value={{pay.paymentPeriodeValue}} formControlName="paymentPeriodeValue" [readonly]="isDelete">
+            </mat-input-container>
+            
+              <mat-input-container class="inp1">
+                <input matInput [matDatepicker]="picker" placeholder="Date Debut" value={{pay.paymentPeriodeDateStart}} formControlName="paymentPeriodeDateStart" [readonly]="isDelete">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker startView="year"></mat-datepicker>
+              </mat-input-container>
+
+              <mat-input-container class="inp1">
+                <input matInput [matDatepicker]="picker1" placeholder="Date Fin" formControlName="paymentPeriodeDateEnd" value={{pay.paymentPeriodeDateEnd}} [readonly]="isDelete">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1 startView="year"></mat-datepicker>
+             </mat-input-container>	   
+             
+             
+            <mat-input-container class="inp1">
+                <input matInput placeholder="Desc/Type/Details" size="30" value={{pay.paymentPeriodeDetails}} formControlName="paymentPeriodeDetails" [readonly]="isDelete">
+            </mat-input-container>
+            
+            <div class="button-row">
+                <button mat-button class="btn2" [disabled]="!PayForm.valid">Sauvegarder</button>
+                &nbsp;
+                <button mat-button class="btn2" type="button" (click)="onNoClick()">Fermer</button>
+            </div>
+        </form>
+								
+        </td>
+    </tr>
+</table>

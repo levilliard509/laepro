@@ -1,0 +1,55 @@
+
+<div class="example-container mat-elevation-z8">
+	<div style="bacground: #eee;">
+		<table>
+		<tr>
+			<td>
+				<mat-input-container floatPlaceholder="never">
+      				<input matInput #filter placeholder="Critere de recherche">
+    			</mat-input-container>
+			</td>		
+			<!--td>
+				<mat-input-container floatPlaceholder="never">
+      				<input matInput #filter placeholder="Nom">
+    			</mat-input-container>
+			</td>
+			<td>
+				<mat-input-container floatPlaceholder="never">
+      				<input matInput #filter placeholder="Prenom">
+    			</mat-input-container>
+			</td>
+			<td>
+				<mat-input-container floatPlaceholder="never">
+      				<input matInput #filter placeholder="Date de Naiss">
+    			</mat-input-container>
+			</td-->
+			</tr>
+		</table>
+	</div>
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container cdkColumnDef="userId">
+      <mat-header-cell *cdkHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *cdkCellDef="let row"> {{row.studentId}} </mat-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="Nom">
+      <mat-header-cell *cdkHeaderCellDef> Nom </mat-header-cell>
+      <mat-cell *cdkCellDef="let row"> {{row.studentFirstname}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container cdkColumnDef="Prenom">
+      <mat-header-cell *cdkHeaderCellDef> Prenom </mat-header-cell>
+      <mat-cell *cdkCellDef="let row"> {{row.studentLastname}} </mat-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="DateNaiss">
+      <mat-header-cell *cdkHeaderCellDef> Date de Naiss </mat-header-cell>
+      <mat-cell *cdkCellDef="let row"> {{row.studentBirthday}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>

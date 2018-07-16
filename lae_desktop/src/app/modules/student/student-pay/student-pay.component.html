@@ -1,0 +1,136 @@
+
+
+  <mat-sidenav-container class="m-std">
+			<mat-sidenav #sidenav #start mode="side" opened="true" class="std-sidenav">
+				
+			<div class="wrap">
+				<div class="">
+					<!-- header -->
+				 
+					<div style="height: 1px"></div>
+					<mat-grid-list cols="1" rowHeight="50px">
+
+							<mat-grid-tile [colspan]="1" class="tit m-grid gcel"> Eleves </mat-grid-tile>
+
+							<!-- home -->
+							<mat-grid-tile [colspan]="1" class="m-grid gcel" [routerLink]="['/home', {outlets: {'home': ['std_home']}}]">
+							  <div class="itm"> 
+								  <br/>
+								  <img src="assets/img/icon/home.png" width="30" height="30">
+								  <p class="h8">Acceuil</p>
+							  </div>
+							</mat-grid-tile>
+				  
+							<!-- mgr -->        
+							<mat-grid-tile [colspan]="1" class="curs m-grid" [routerLink]="['/home', {outlets: {'home': ['std_mgr']}}]">
+							  <div class="itm"> 
+								  <br/>
+								  <img src="assets/img/icon/user.png" width="30" height="30">
+								  <p class="h8">Gest. El.</p>
+							  </div>
+							</mat-grid-tile>
+				  
+							<!-- pay -->
+							<mat-grid-tile [colspan]="1" class="curs m-grid current-std" [routerLink]="['/home', {outlets: {'home': ['std_pay']}}]">
+							  <div class="itm"> 
+								  <br/>
+								  <img src="assets/img/icon/pay.png" width="30" height="30">
+								  <p class="h8">Gest. Paie</p>
+							  </div>
+							</mat-grid-tile>
+				  
+							<!-- report -->
+							<mat-grid-tile [colspan]="1" class="curs m-grid">
+							  <div class="itm"> 
+								  <br/>
+								  <img src="assets/img/icon/report.png" width="30" height="30" [routerLink]="['/home', {outlets: {'home': ['std_report']}}]">
+								  <P class="h8">Rapports</P>
+							  </div>
+							 </mat-grid-tile>
+					</mat-grid-list>
+				</div>
+	
+			</div>
+	
+			</mat-sidenav>
+	
+			<mat-sidenav-content class="std-contain">
+					 <router-outlet name="home"></router-outlet>
+					 <mat-tab-group>
+							<mat-tab label="PAIEMENTS-ELEVES">
+							<div class="marg mat-elevation-z8">
+						
+								<mat-table #table [dataSource]="dataSource">
+						
+									<!--- Note that these columns can be defined in any order.
+												The actual rendered columns are set as a property on the row definition" -->
+						
+									<!-- ID Column -->
+									<ng-container matColumnDef="Eleve">
+										<mat-header-cell *matHeaderCellDef> El&#232;ve </mat-header-cell>
+										<mat-cell *matCellDef="let row"> {{row.studentLastname[0] + ". " + row.studentFirstname}} </mat-cell>
+									</ng-container>
+						
+									<!-- Progress Column -->
+									<ng-container matColumnDef="Classe">
+										<mat-header-cell *matHeaderCellDef>Classe</mat-header-cell>
+										<mat-cell *matCellDef="let row"> {{row.institutionClassName}}</mat-cell>
+									</ng-container>
+						
+									<!-- Name Column -->
+									<ng-container matColumnDef="Montant">
+										<mat-header-cell *matHeaderCellDef> Montant </mat-header-cell>
+										<mat-cell *matCellDef="let row"> {{row.newAnnualFee}}HTG </mat-cell>
+									</ng-container>
+						
+									<!-- Name Column -->
+									<ng-container matColumnDef="Balance">
+										<mat-header-cell *matHeaderCellDef> Balance actuelle </mat-header-cell>
+										<mat-cell *matCellDef="let row"> {{row.newAnnualFee-row.totalStudentPayment}}HTG </mat-cell>
+									</ng-container>
+						
+									<!-- Name Column -->
+									<ng-container matColumnDef="Status">
+										<mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+										<mat-cell *matCellDef="let row"> Paye </mat-cell>
+									</ng-container>
+						
+									<!-- Color Column -->
+									<ng-container matColumnDef="Date">
+										<mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+										<mat-cell *matCellDef="let row"> {{row.dateCreated}} </mat-cell>
+									</ng-container>
+						
+								<ng-container cdkColumnDef="Details">
+										<mat-header-cell *cdkHeaderCellDef>  </mat-header-cell>
+										<mat-cell *cdkCellDef="let row"> <button mat-button color="accent" (click)="openDetailsDialog(row)">Details</button></mat-cell>
+									</ng-container>
+						
+								<ng-container cdkColumnDef="Paye">
+										<mat-header-cell *cdkHeaderCellDef>  </mat-header-cell>
+										<mat-cell *cdkCellDef="let row"> <button mat-button color="accent" (click)="openPayDialog(row)">Payer</button></mat-cell>
+									</ng-container>
+						
+								<ng-container cdkColumnDef="Historique">
+										<mat-header-cell *cdkHeaderCellDef>  </mat-header-cell>
+										<mat-cell *cdkCellDef="let row"> <button mat-button color="accent" (click)="openHistoriqueDialog(row)">Historique</button></mat-cell>
+									</ng-container>
+						
+									<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+									<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+								</mat-table>
+						
+								<mat-paginator #paginator
+															[length]="stdDatabase.data.length"
+															[pageIndex]="0"
+															[pageSize]="10"
+															[pageSizeOptions]="[5, 10, 25, 100]">
+								</mat-paginator>
+							</div>  
+						</mat-tab>
+						</mat-tab-group>
+	
+			</mat-sidenav-content>
+		</mat-sidenav-container>
+	
+	

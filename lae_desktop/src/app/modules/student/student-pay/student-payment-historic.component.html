@@ -1,0 +1,84 @@
+
+<div>
+	<label style="background: #263238; padding: 10px; color: #fff;"> Details paiement</label>
+	<button mat-raised-button color="warn" (click)="printPayHis()">Imprimer</button>
+</div>
+
+<div id="pay_his_id">
+	<table>
+			<tr style="background: #fefefe">
+				<td class="pay">
+					<mat-list>
+					<h3 mat-subheader>Eleves</h3>
+					<mat-list-item>
+						<p mat-line>{{obj.studentLastname}}</p>
+						<p mat-line> {{obj.studentFirstname}} </p>
+					</mat-list-item>
+					<mat-divider></mat-divider>
+					</mat-list>
+				</td>		
+				<td class="pay">
+					<mat-list>
+					<h3 mat-subheader>Classe</h3>
+					<mat-list-item>
+						<p mat-line>{{obj.institutionClassName}}</p>
+						<p mat-line> {{obj.institutionClassLevel}} </p>
+					</mat-list-item>
+					<mat-divider></mat-divider>
+					</mat-list>
+				</td>		
+				<td class="pay">
+					<mat-list>
+					<h3 mat-subheader>Frais Annuel/Classe</h3>
+					<mat-list-item>
+						<p mat-line>{{obj.institutionClassName}}</p>
+						<p mat-line> {{obj.newAnnualFee}} HTG</p>
+					</mat-list-item>
+					<mat-divider></mat-divider>
+					</mat-list>
+				</td>
+			</tr>
+	</table>
+
+	<hr>
+	<br/>
+	Historiques de versements
+    <table>
+		<tr style="background: #fefefe">
+			<td class="pay">
+				<mat-list>
+				<mat-list-item>
+						<h3 mat-subheader>Versement </h3>
+					</mat-list-item>
+				</mat-list>
+			</td>		
+			<td class="pay">
+				<mat-list>
+					<mat-list-item>
+						<h3 mat-subheader>Date </h3>
+					</mat-list-item>
+				</mat-list>
+			</td>		
+		</tr>
+		<tr *ngFor="let p of stdPay">
+				<td class="pay">
+						<mat-list>
+						<mat-list-item>
+							<h6 mat-line>{{p.paymentStudentValue}}HTG</h6>
+						</mat-list-item>
+					</mat-list>
+				</td>
+				<td class="pay">
+						<mat-list>
+						<mat-list-item>
+								<h6 mat-line>{{p.dateCreated}}</h6>
+						</mat-list-item>
+					</mat-list>				
+				</td>
+		</tr>
+	</table>
+</div>
+
+<div style="margin-top: 20px;">
+	<button mat-raised-button color="warn" (click)="onNoClick()">Fermer</button>
+</div>

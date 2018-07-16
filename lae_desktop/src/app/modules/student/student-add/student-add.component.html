@@ -1,0 +1,232 @@
+<div class="std-section">
+    <form [formGroup]="StudentForm" class="m_form"  (ngSubmit)="validateStudent()">
+   <mat-grid-list cols="4" rowHeight="700px">
+       <!--student info -->
+       <mat-grid-tile>	
+       <div class="std">              
+       <table>
+           <tr>
+             <td class="iheader">Infomations sur l'&#233;l&#232;ve</td>
+           </tr>
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput placeholder="Prénom" formControlName="studentLastname" size="20">
+             </mat-input-container>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput placeholder="Nom" formControlName="studentFirstname" size="20">
+             </mat-input-container>
+           </td>
+         </tr>
+         <tr>
+           <td>
+							<mat-input-container>
+                  <input matInput readonly min="1960-12-31" max="2017-12-31" [matDatepicker]="picker" placeholder="Date de Naiss" formControlName="studentBirthday">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker startView="year"></mat-datepicker>
+              </mat-input-container>								
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <mat-select id="studentSex" placeholder="Sex" formControlName="studentSex">
+               <mat-option value="M">M</mat-option>
+               <mat-option value="F">F</mat-option>
+              </mat-select>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput type="tel" placeholder="Téléphone" formControlName="studentTels" size="20">
+             </mat-input-container>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput type="email" placeholder="Email" formControlName="studentEmail" size="20">
+             </mat-input-container>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput placeholder="Lieu de naissance" formControlName="studentBirthplace" size="20">
+             </mat-input-container>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput placeholder="Ancienne Ecole" formControlName="studentOldSchool" size="20">
+             </mat-input-container>
+           </td>
+         </tr>
+
+         <tr>
+           <td>
+             <mat-select id="institution_class_id" placeholder="Classe" width="150" formControlName="institutionClassId">
+               <mat-option *ngFor="let c of iclasses" value={{c.institutionClassId}}>{{c.institutionClassLevel}}</mat-option>
+             </mat-select>
+           </td>
+         </tr>
+
+
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput placeholder="Adresse" formControlName="studentAddress" size="30">
+             </mat-input-container>
+           </td>
+         </tr>					
+       </table>
+       </div>
+       </mat-grid-tile>
+
+       <mat-grid-tile>
+       <!-- parent/m info -->
+       <div class="std">        
+       <table>
+         <tr>
+             <td class="iheader">P&#232;re</td>
+           </tr>
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput placeholder="Prenom" formControlName="parentFirstName" size="20">
+             </mat-input-container>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput placeholder="Nom" formControlName="parentLastname" size="20">
+             </mat-input-container>
+           </td>
+         </tr>	
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput type="tel" placeholder="Telephone" formControlName="parentTels" size="15">
+             </mat-input-container>
+           </td>
+         </tr>												
+
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput type="text" placeholder="Adresse" formControlName="parentAddress" size="30">
+             </mat-input-container>
+           </td>
+         </tr>													
+
+         <tr>
+             <td class="iheader">M&#232;re</td>
+           </tr>
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput placeholder="Prenom" formControlName="fParentFirstName" size="20">
+             </mat-input-container>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput placeholder="Nom" formControlName="fParentLastname" size="20">
+             </mat-input-container>
+           </td>
+         </tr>	
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput type="tel" placeholder="Telephone" formControlName="fParentTels" size="15">
+             </mat-input-container>
+           </td>
+         </tr>												
+
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput placeholder="Adresse" formControlName="fParentAddress" size="30">
+             </mat-input-container>
+           </td>
+         </tr>		
+       </table>	
+
+       </div>
+       </mat-grid-tile>
+
+       <!-- person ref info -->
+       <mat-grid-tile>
+        <div class="std">
+       <table>
+         <tr>
+             <td class="iheader"> Personne Responsable</td>
+           </tr>
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput placeholder="Prenom" formControlName="personFirstName" size="20">
+             </mat-input-container>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput placeholder="Nom" formControlName="personLastname" size="20">
+             </mat-input-container>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput type="tel" placeholder="Telephone" formControlName="personTels" size="15">
+             </mat-input-container>
+           </td>
+         </tr>												
+         <tr>
+           <td>
+              <mat-select id="personSex" placeholder="Sex" formControlName="personSex">
+                <mat-option value="M">M</mat-option>
+                <mat-option value="F">F</mat-option>
+              </mat-select>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput placeholder="Desc(Cousin, Soeur, ...)" formControlName="personDesc" size="15">
+             </mat-input-container>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <mat-input-container>
+               <input matInput placeholder="Adresse" formControlName="personAddress" size="30">
+             </mat-input-container>
+           </td>
+         </tr>						
+         </table>	
+         </div>					
+       </mat-grid-tile>
+       <mat-grid-tile>
+        <div class="std">
+              <p><img src="assets/img/student.jpg" style="border: solid 1px #263238;"></p>
+          <input type="file" name="photo" style="width: 120px;" (change)="setUrl()" />
+        </div>
+      </mat-grid-tile>
+     </mat-grid-list>
+
+     <div class="row" style="margin-top: 40px;">
+       <button type="submit"  mat-raised-button color="warn" [disabled]="!StudentForm.valid">Valider</button>
+       <button type="button"  mat-raised-button color="warn" (click)="printStd()">Imprimer</button>
+     </div>
+
+   </form>
+ </div>

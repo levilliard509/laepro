@@ -1,0 +1,125 @@
+<div style="text-align: center; magin-bottom: 80px; background: #263238; padding: 10px; color: #fff;">
+    {{clas.institutionClassName}}-Cours
+</div>
+
+<div>
+    <div style="margin-left: 10px">
+      <mat-form-field floatPlaceholder="never">
+        <input matInput #filter placeholder="Recherche">
+      </mat-form-field>
+    </div>
+    <mat-table #table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="Niveau">
+          <mat-header-cell *matHeaderCellDef> Niveau </mat-header-cell>
+          <mat-cell *matCellDef="let row"> {{row.courseLevel}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Titre">
+        <mat-header-cell *matHeaderCellDef> Titre </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.courseTitle}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Periode">
+        <mat-header-cell *matHeaderCellDef> Periode </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{getPeriode(row)}} </mat-cell>
+      </ng-container>
+<!--   
+      <ng-container matColumnDef="Classe">
+        <mat-header-cell *matHeaderCellDef> Classe </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.institutionClass}} </mat-cell>
+      </ng-container>   -->
+
+      <ng-container matColumnDef="NbrHeures">
+        <mat-header-cell *matHeaderCellDef> Nbr Heures </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.courseCreditHours}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="Description">
+        <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.courseDesc}} </mat-cell>
+      </ng-container>
+  
+    <ng-container matColumnDef="Update">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row"> <button mat-button color="warn" (click)="openUpdateDialog(row)">Update</button></mat-cell>
+      </ng-container>
+  
+    <ng-container matColumnDef="Delete">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row"> <button mat-button color="warn" (click)="deleteCourse(row)">Supprimer</button></mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+
+  <div style="height: 20px; background: #eee">
+
+  </div>
+  <hr>
+  <div>
+
+    <form [formGroup]="CourseForm" (ngSubmit)="onClickSave()" *ngIf="isAdd">
+      <table>
+        <tr>
+          <td>
+              <mat-select placeholder="Periode" formControlName="periodeId">
+                 <mat-option *ngFor="let p of periodes" value={{p.periodeId}}>{{p.periodeName}}</mat-option>
+              </mat-select>
+           </td>
+           <td>
+             &nbsp;
+             &nbsp;
+           </td>
+           <td>
+              <mat-input-container>
+                  <input matInput placeholder="Niveau" formControlName="courseLevel" [readonly]="isDelete">
+              </mat-input-container>							
+            </td>
+           <td>
+              &nbsp;
+              &nbsp;
+            </td>
+            <td>              
+              <mat-input-container>
+                  <input matInput placeholder="Titre" formControlName="courseTitle" [readonly]="isDelete">
+              </mat-input-container>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              <mat-input-container>
+                  <input matInput placeholder="Nbr Heures" formControlName="courseCreditHours" [readonly]="isDelete">
+                </mat-input-container>							
+          </td>
+          <td>
+              &nbsp;
+              &nbsp;
+            </td>
+          <td>
+              <mat-input-container>
+                <textarea matInput placeholder="Description" formControlName="courseDesc" [readonly]="isDelete"></textarea>
+              </mat-input-container>
+          </td>
+        </tr>
+        <tr>
+            <div class="button-row">
+                <button mat-button class="btn2" type="submit" [disabled]="!CourseForm.valid">Sauvegarder</button>
+            </div>	
+        </tr>
+      </table>
+    </form>
+
+    <br/><br/><br/>
+    <div class="button-row">
+      <button mat-fab class="btn2" (click)="showAdd()"><mat-icon>add</mat-icon></button>
+    </div>								
+
+  </div>
+
+  <div style="text-align: right; margin-top: 20px">
+      <button mat-button color="warn" (click)="onNoClick()">Fermer</button>
+  </div>
+  

@@ -1,0 +1,29 @@
+
+.card{
+	background-image: url('../../../../assets/img/1.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	margin: 20px;
+    padding: 20px;
+	width: 150px;
+	height: 80px;
+}
+
+.card1{
+	background-image: url('../../../../assets/img/1.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	margin: 20px;
+    padding: 20px;
+	width: 150px;
+}
+
+table.test td {
+    padding: 12px;
+    border:2px solid #fff;border-collapse:separate;
+}
+.hdr{
+	background: #eee;
+	padding: 5px;
+    text-transform: uppercase;
+}
